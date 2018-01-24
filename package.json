@@ -1,0 +1,28 @@
+{
+  "name": "motorino.web.2018",
+  "version": "1.0.0",
+  "description": "Motorino Rent a Bike Site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "George Koukoudis",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "4.0.0-beta.3",
+    "eslint": "^4.14.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.9",
+    "bootstrap-daterangepicker": "^2.1.30",
+    "toastr": "^2.1.4",
+    "moment": "^2.20.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "merge-stream": "1.0.1",
+    "lodash": "^4.17.4"
+  }
+}
