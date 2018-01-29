@@ -1,12 +1,15 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
+const cleanCSS=require('gulp-clean-css');
+
 var merge = require('merge-stream');
 
 // Compile Sass & Inject Into Browser
 gulp.task('sass', function () {
     return gulp.src(['node_modules/bootstrap/scss/bootstrap.scss', 'src/scss/*.scss'])
         .pipe(sass())
+        .pipe(cleanCSS())  
         .pipe(gulp.dest("src/css"))
         .pipe(browserSync.stream());
 });
