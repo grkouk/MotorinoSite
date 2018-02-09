@@ -1,6 +1,7 @@
 {
     "env": {
-        "browser": true
+        "browser": true,
+        "jquery": true
     },
     "extends": "eslint:recommended",
     "rules": {
@@ -12,13 +13,14 @@
             "error",
             "windows"
         ],
-        "quotes": [
+        "quotes": [ 
             "error",
             "double"
         ],
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-console":"off"
     }
 }

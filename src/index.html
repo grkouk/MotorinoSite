@@ -64,27 +64,7 @@
                 "image": "http://thassos-rent-a-bike.com/img/sobalogo.png"
             }
     </script>
-    <!-- <script>
-        function displayNextImage() {
-            x = (x === images.length - 1) ? 0 : x + 1;
-            document.getElementById("img1").src = images[x];
-        }
-
-        function displayPreviousImage() {
-            x = (x <= 0) ? images.length - 1 : x - 1;
-            document.getElementById("img1").src = images[x];
-        }
-
-        function startTimer() {
-            setInterval(displayNextImage, 5000);
-        }
-
-        var images = [],
-            x = -1;
-        images[0] = "img/aliki.png";
-        images[1] = "img/giola.png";
-        images[2] = "img/katar.png";
-    </script> -->
+    
 </head>
 
 <body>
@@ -445,9 +425,6 @@
         </div>
     </section>
 
-
-
-
     <!-- Modal Facebook Messenger-->
     <div class="modal fade" id="facebookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
@@ -503,25 +480,25 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-2">
+                            <!-- <div class="form-group col-md-2">
                                 <label for="inputAdults">Adults</label>
                                 <input type="number" class="form-control" id="inputAdults" required>
                                 <div class="invalid-feedback">
                                     Select Adults.
                                 </div>
-                            </div>
-                            <div class="form-group col-md-2">
+                            </div> -->
+                            <!-- <div class="form-group col-md-2">
                                 <label for="inputChildren">Children</label>
                                 <input type="number" class="form-control" id="inputChildren" required>
                                 <div class="invalid-feedback">
                                     Select Children.
                                 </div>
-                            </div>
-                            <div class="form-group col-md-4">
+                            </div> -->
+                            <div class="form-group col-md-6">
                                 <label for="inputCity">City</label>
                                 <input type="text" class="form-control" id="inputCity">
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="inputCountry">Country</label>
                                 <select id="inputCountry" class="form-control" required>
                                     <option value="" selected>Choose...</option>
@@ -542,13 +519,14 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="roomType">Room Type</label>
-                                <select id="roomType" class="form-control" required>
+                                <label for="bikeType">Bike Type</label>
+                                <select id="bikeType" class="form-control" required>
                                     <option value="" selected>Choose...</option>
-                                    <option value="ST2">Studio double (2 Beds)</option>
-                                    <option value="ST3">Studio triple (3 Beds)</option>
-                                    <option value="APP4">Appartment (4 Beds)</option>
-                                    <option value="APP5">Appartment (5 Beds)</option>
+                                    <option value="SC50">Scooter 50cc</option>
+                                    <option value="SC125">Scooter 125cc</option>
+                                    <option value="SC200">Scooter 200cc</option>
+                                    <option value="ATV300">ATV 300cc</option>
+                                    <option value="ATV500">ATV 500cc</option>
 
                                 </select>
                                 <div class="invalid-feedback">
@@ -607,100 +585,7 @@
     <script>
         $('.parallax-window').parallax();
     </script>
-    <script>
-        // function isTextFieldEmpty(fieldId) {
-        //     var tField = document.getElementById(fieldId);
-        //     var $tField = $("#" + fieldId);
-        //     if ($tField.val() == null || $tField.val() == "") {
-        //         // $tField.addClass("form-control-danger");
-        //         tField.setCustomValidity('Error Message');
-        //         return true;
-        //     } else {
-        //         //$tField.removeClass("form-control-danger")
-        //         tField.setCustomValidity('');
-        //         return false;
-        //     }
-        // }
-        $('#fillRequirementsModal').on('show.bs.modal', function (event) {
-            $("#spinIcon").hide();
-            var dateFrom = document.getElementById('dateFrom');
-            var dateTo = document.getElementById('dateTo');
-            dateFrom.value = moment().format("YYYY-MM-DD");
-            dateTo.value = moment().add(10, 'days').format("YYYY-MM-DD");
-        })
-
-        var saveButtonClicked = false;
-        $('#requirementsModalSaveButton').on('click', function () {
-            if (saveButtonClicked) {
-                console.log("Ignoring button click");
-                return;
-            }
-
-            saveButtonClicked = true;
-            var myForm = document.getElementById('requirementsModalForm');
-            var dateFrom = document.getElementById('dateFrom');
-            var dateTo = document.getElementById('dateTo');
-            var eMail = document.getElementById('inputEmail');
-            var customerName = document.getElementById('customerName');
-            var inputAdults = document.getElementById('inputAdults');
-            var inputChildren = document.getElementById('inputChildren');
-            var inputCity = document.getElementById('inputCity');
-            var inputCountry = document.getElementById('inputCountry');
-            var roomType = document.getElementById('roomType');
-
-
-            if (dateFrom.value > dateTo.value) {
-
-                console.log("date from is graiter then date to");
-            }
-            if (myForm.checkValidity() === false) {
-                saveButtonClicked = false;
-                toastr.error('Please correct all the errors!', 'Motorino', {
-                    progressBar: true,
-                    positionClass: "toast-bottom-center"
-                });
-            } else {
-                //Testapi varsion
-                var formData = {
-                    RequestDate: moment().format("YYYY-MM-DD"),
-                    RequesterEmail: eMail.value,
-                    RequesterName: customerName.value,
-                    Adults: inputAdults.value,
-                    Children: inputChildren.value,
-                    // City
-                    Country: inputCountry.value,
-                    RoomType: roomType.value,
-                    DateFrom: dateFrom.value,
-                    DateTo: dateTo.value
-                };
-                //var uri = 'http://localhost:60928/api/RoomQuoteRequests'
-                var uri = 'http://testapi.potos.tours/api/RoomQuoteRequests'
-                var formDataJSON = JSON.stringify(formData);
-                var jqxhr = $.ajax({
-                    url: uri,
-                    type: 'POST',
-                    data: formDataJSON,
-                    contentType: "application/json",
-                    success: function () {
-                        console.log("success in post call ");
-                        $("#spinIcon").hide();
-                        $('#fillRequirementsModal').modal('hide')
-                        saveButtonClicked = false;
-                        toastr.success('Thank you for your request!', 'Motorino', {
-                            progressBar: true,
-                            positionClass: "toast-bottom-center"
-                        });
-                    },
-                    error: function () {
-                        saveButtonClicked = false;
-                        $("#spinIcon").hide();
-                        console.log("error in post call ");
-                    }
-                });
-            }
-            myForm.classList.add('was-validated');
-        });
-    </script>
+   
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -734,10 +619,10 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbH6_TL15fk6BU8sNwaQtBN31lVeCLObI"></script>
     <script type="text/javascript">
         var markers = [{
-            'title': 'Villa Koukoudis',
-            'lat': '40.611698',
-            'lng': '24.607855',
-            'description': 'Villa Koukoudis description'
+            'title': 'Motorino Rent a Bike',
+            'lat': '40.611427',
+            'lng': '24.605492',
+            'description': 'Motorino Rent a Bike ATV in Thassos Island'
         }];
         window.onload = function () {
             var mapOptions = {
