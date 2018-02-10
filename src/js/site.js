@@ -6,7 +6,7 @@ $("#fillRequirementsModal").on("show.bs.modal", function (event) {
 	var dateFrom = document.getElementById("dateFrom");
 	var dateTo = document.getElementById("dateTo");
 	dateFrom.value = moment().format("YYYY-MM-DD");
-	dateTo.value = moment().add(10, "days").format("YYYY-MM-DD");
+	dateTo.value = moment().add(3, "days").format("YYYY-MM-DD");
 });
 
 var saveButtonClicked = false;
@@ -54,6 +54,7 @@ $("#requirementsModalSaveButton").on("click", function () {
 		};
 		//var uri = 'http://localhost:60928/api/RoomQuoteRequests'
 		var uri = "http://testapi.potos.tours/api/RoomQuoteRequests";
+		$("#spinIcon").show();
 		var formDataJSON = JSON.stringify(formData);
 		var jqxhr = $.ajax({
 			url: uri,
@@ -73,6 +74,10 @@ $("#requirementsModalSaveButton").on("click", function () {
 			error: function () {
 				saveButtonClicked = false;
 				$("#spinIcon").hide();
+				toastr.error("There was an error with your request. Please try again later","Motorino",{
+					progressBar: true,
+					positionClass: "toast-bottom-center"
+				});
 				console.log("error in post call ");
 			}
 		});
