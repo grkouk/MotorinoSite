@@ -19,7 +19,7 @@ body {
 .navbar-scrolling {
     opacity: 0.8;
 }
-#home-section {
+#thassos-rent-a-bike-potos-thassos-home-section {
     // background: url('../img/soba1300.png') no-repeat;
     // min-height: 700px;
     // background-size: cover;
@@ -28,13 +28,21 @@ body {
     //     min-height: 1100px;
     // }
     
-    .fa {
-        color: $primary-color;
-        background: #fff;
-        padding: 4px;
-        border-radius: 5px;
-        font-size: $icon-size;
-    }
+     .fa {
+    //     color: $primary-color;
+    //     background: #fff;
+    //     padding: 4px;
+    //     border-radius: 5px;
+         font-size: $icon-size;
+     }
+   
+}
+
+.homeList{
+    color: #fff;
+    background:rgba(70, 71, 71, 0.3);
+    padding: 4px;
+    border-radius: 5px;
 }
 
 #accommodation-section,
